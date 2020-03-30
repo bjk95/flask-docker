@@ -12,5 +12,8 @@ RUN apt-get update \
   && pip3 install flask
 
 COPY ./src /src
+RUN cd /home/ && ls
 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
+ENTRYPOINT FLASK_APP=/src/basic_flask.py flask run --host=0.0.0.0
+
+EXPOSE 5000
